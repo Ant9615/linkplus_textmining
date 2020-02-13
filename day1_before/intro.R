@@ -56,3 +56,81 @@ c[c(1,3),]
 c[,c(1,3,4)]
 
 # dataframe
+x1 <- c(100,89,22,76,48)
+x2 <- c("A","B","C","A","B")
+df <- data.frame(grade=x1,class=x2)
+df
+df$grade
+
+# rm is rap monster
+ls()
+rm(a)
+rm(list=ls()) # 변수 싹다 삭제
+
+"데이터 불러오기"
+# working directory 불러오기
+getwd()
+# setwd()은 괄호 안의 path로 working directory를 변환해줌
+setwd("C:/Users/korea/Desktop")
+
+# 파일 불러오기 
+test <- read.table("./data/data.txt", header = TRUE) #txt파일 불러오기 header = TRUE 는 column 명이 있다는 것을 인잣값으로 선언
+test
+text_1 <- read_excel("./data/data.xlsx")
+colnames(text_1)
+text_1$GEN
+typeof(text_1$GEN)
+mode(text_1$GEN)
+
+x1 <- 1:20 
+x2 <- rep(c("a",'b'),10)
+x3 <- sample(1:100, 20)
+x1 ; x2 ; x3
+View(x1)
+
+data1 <-cbind(x1,x2,x3)
+data1
+data2<-rbind(x1,x2,x3)
+data2
+
+# 데이터 쓰기
+write.table(data2, file="./exp1")
+write.csv(data2, file='./data/data2.csv')
+
+# EXCEL 불러오기
+setwd("C:/Users/korea/Desktop/data")
+df_exam <- read_excel("./excel_exam.xlsx")
+View(df_exam)
+mean(df_exam$english)
+round(var(df_exam$english),1)
+
+df_csv_exam <- read.csv("./data/data2.csv",stringsAsFactors = F)
+df_csv_exam
+getwd()
+
+# rda로 데이터 저장하고 불러오기 
+setwd('D:/linkplus_textmining/day1_before')
+save(df_csv_exam, file="./exp1.rda")
+t_t <- load("./exp1.rda")
+rm(list=ls())
+t_t
+df_csv_exam
+transform(df_csv_exam)
+
+# 요약 함수
+str(df_exam) # 속성 출력 
+head(df_exam, 5) # 앞의 5개의레코드
+summary(df_exam) # 요약통게량
+
+"
+class로 그루핑하고 수학 점수가 55점 이상인 학생 중 반, 영어, 과학 점수를 선택하여 
+그 중 영어 점수가 높은 순서대로 정렬하여 상위 6명만 보고 싶을 때
+"
+sy <- df_exam %>% 
+  group_by(class) %>% 
+  filter(math>=55) %>% 
+  select(class, english, science) %>% 
+  arrange(desc(english)) %>% 
+  head()
+sy
+
