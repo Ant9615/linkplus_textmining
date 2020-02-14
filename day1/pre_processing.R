@@ -29,3 +29,4 @@ df_ex %>%
 df_ex %>% 
   group_by(class) %>% 
   summarise(sd_science = sd(science))
+getwd()

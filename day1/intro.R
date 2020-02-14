@@ -134,3 +134,16 @@ sy <- df_exam %>%
   head()
 sy
 
+
+
+# vector index 접근하기기
+names(airquality)[5]
+air <- as.data.frame(airquality)
+
+#열이름 바꾸기 
+names(air)[5] <- "month"
+names(air)[5]
+names(air)[2] <- "solar.r"
+names(air)[2]
+
+
