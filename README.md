@@ -5,4 +5,4 @@
 R 기초와 전처리
 
 ## DAY2 
-R crawling, crawling data를 이용한 text mining과 twitter api를 이용한 text mining
+R을 이용한 신문사 crawling, crawling data를 이용한 text mining과 twitter api를 이용한 text mining
